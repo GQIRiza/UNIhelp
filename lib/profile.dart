@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatefulWidget {
-  ProfilePage({Key? key}) : super(key: key);
+  const ProfilePage({Key? key}) : super(key: key);
 
   @override
   State<ProfilePage> createState() => _ProfilePageState();
@@ -14,14 +14,14 @@ class _ProfilePageState extends State<ProfilePage> {
       body: SafeArea(
         child: Column(
           children: [
-            ProfiPic(),
+            ProfilePic(),
           ],
         ),
       ),
     );
   }
 
-  Widget ProfiPic() {
+  Widget ProfilePic() {
     return Container(
       alignment: Alignment.center,
       child: Image.network(

@@ -8,10 +8,7 @@ import 'package:unihelp/dialogues.dart';
 import 'package:unihelp/search.dart';
 import 'package:unihelp/profile.dart';
 
-
-
-
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -21,14 +18,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: BlocProvider(
         create: (_) => ApiBloc(), // Create an instance of ApiBloc
-        child: MyHomePage(), // Set MyHomePage as the home screen
+        child: const MyHomePage(), // Set MyHomePage as the home screen
       ),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key}) : super(key: key);
+  const MyHomePage({Key? key}) : super(key: key);
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -36,6 +33,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 0;
+
   @override
   void initState() {
     super.initState();
@@ -84,21 +82,21 @@ class _MyHomePageState extends State<MyHomePage> {
     return BlocBuilder<ApiBloc, ApiStates>(builder: (context, state) {
       print(state);
       if (state is LoadingState) {
-        return Center(
+        return const Center(
           child: CircularProgressIndicator(),
         ); // Show a loading indicator while fetching data// Show the note details screen
       } else if (state is ErrorState) {
-        return Center(
+        return const Center(
           child: Text("Error"),
         ); // Show an error message if there's an error state
       } else if (state is SearchState) {
-        return SearchPage();
+        return const SearchPage();
       } else if (state is DialogState) {
-        return DialoguePage();
+        return const DialoguePage();
       } else if (state is ProfileState) {
-        return ProfilePage();
+        return const ProfilePage();
       } else {
-        return Text(
+        return const Text(
           "Nothing",
         ); // Show a default message if the state is not recognized
       }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class SearchPage extends StatefulWidget {
+  const SearchPage({super.key});
+
   @override
   _SearchPageState createState() => _SearchPageState();
 }
@@ -12,9 +14,8 @@ class _SearchPageState extends State<SearchPage> {
       body: SafeArea(
         child: Column(
           children: [
-            Pusto(),
             Search(),
-            Categorii(),
+            Categories(),
             Types(),
           ],
         ),
@@ -22,12 +23,9 @@ class _SearchPageState extends State<SearchPage> {
     );
   }
 
-  Widget Pusto() {
-    return Text('   ');
-  }
-
   Widget Search() {
-    return Center(
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
       child: SearchBar(
         padding: const MaterialStatePropertyAll<EdgeInsets>(
             EdgeInsets.symmetric(horizontal: 16.0, vertical: 9.0)),
@@ -46,11 +44,11 @@ class _SearchPageState extends State<SearchPage> {
     );
   }
 
-  Widget Categorii() {
+  Widget Categories() {
     return Container(
-      margin: EdgeInsets.only(top: 6, left: 20),
+      margin: const EdgeInsets.only(top: 10, left: 20),
       alignment: Alignment.centerLeft,
-      child: Text(
+      child: const Text(
         'Категории',
         textAlign: TextAlign.left,
         style: TextStyle(
@@ -65,11 +63,11 @@ class _SearchPageState extends State<SearchPage> {
       child: Column(
         children: [
           Container(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             alignment: Alignment.center,
             width: 370,
             height: 80,
-            margin: EdgeInsets.only(top: 14),
+            margin: const EdgeInsets.only(top: 20),
             decoration: BoxDecoration(
                 color: Colors.deepPurple[100],
                 borderRadius: BorderRadius.circular(20)),
@@ -80,8 +78,8 @@ class _SearchPageState extends State<SearchPage> {
                   height: 50,
                   width: 50,
                 ),
-                Text('       '),
-                Text(
+                const SizedBox(width: 20),
+                const Text(
                   'Университеты',
                   style: TextStyle(
                       fontSize: 26, fontFamily: "Inter", color: Colors.black),
@@ -90,11 +88,11 @@ class _SearchPageState extends State<SearchPage> {
             ),
           ),
           Container(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             alignment: Alignment.center,
             width: 370,
             height: 80,
-            margin: EdgeInsets.only(top: 20),
+            margin: const EdgeInsets.only(top: 20),
             decoration: BoxDecoration(
                 color: Colors.indigo[200],
                 borderRadius: BorderRadius.circular(20)),
@@ -105,8 +103,8 @@ class _SearchPageState extends State<SearchPage> {
                   height: 50,
                   width: 50,
                 ),
-                Text('       '),
-                Text(
+                const SizedBox(width: 20),
+                const Text(
                   'Предметы',
                   style: TextStyle(
                       fontSize: 26, fontFamily: "Inter", color: Colors.black),
@@ -115,11 +113,11 @@ class _SearchPageState extends State<SearchPage> {
             ),
           ),
           Container(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             alignment: Alignment.center,
             width: 370,
             height: 80,
-            margin: EdgeInsets.only(top: 20),
+            margin: const EdgeInsets.only(top: 20),
             decoration: BoxDecoration(
                 color: Colors.indigo[300],
                 borderRadius: BorderRadius.circular(20)),
@@ -130,8 +128,8 @@ class _SearchPageState extends State<SearchPage> {
                   height: 50,
                   width: 50,
                 ),
-                Text('       '),
-                Text(
+                const SizedBox(width: 20),
+                const Text(
                   'Виды работ',
                   style: TextStyle(
                       fontSize: 26, fontFamily: "Inter", color: Colors.black),

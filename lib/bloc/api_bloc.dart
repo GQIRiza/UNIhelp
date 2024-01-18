@@ -28,6 +28,7 @@ class ApiBloc extends Bloc<ApiEvents, ApiStates> {
       emitter(ErrorState()); // Emit error state in case of an error
     }
   }
+
   _getProfilePage(ProfileEvent event, Emitter<ApiStates> emitter) async {
     emit(LoadingState()); // Emit loading state
     try {
