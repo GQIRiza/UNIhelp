@@ -1,17 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:unihelp/bloc/api_bloc.dart';
+import 'package:unihelp/bloc/api_events.dart';
 
-void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: DialoguePage(),
-    );
-  }
-}
 class DialoguePage extends StatefulWidget {
   DialoguePage({Key? key}) : super(key: key);
 
@@ -28,23 +20,7 @@ class _DialoguePageState extends State<DialoguePage> {
           'UNIhelp', style: TextStyle(fontSize: 30, fontFamily: 'Ubuntu'),)),
         backgroundColor: Color(0xff9fa8da),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.grey[300],
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.message),
-            label: 'Dialogues',
-          ),
-        ],
-      ),
+
       body: Column(
         children: [
           Search(),
