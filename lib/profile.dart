@@ -62,7 +62,7 @@ class _ProfilePageState extends State<ProfilePage> {
       decoration: BoxDecoration(color: Colors.grey[100],),
       child: Row(
         children: [
-              Text('тут будет карта', style: TextStyle(fontSize: 20, fontFamily: "Inter",color: Colors.black),),
+              Text('карта', style: TextStyle(fontSize: 20, fontFamily: "Inter",color: Colors.black),),
               Text('Способы оплаты', style: TextStyle(fontSize: 16, fontFamily: "Inter",color: Colors.black),),
             ],
       ),
