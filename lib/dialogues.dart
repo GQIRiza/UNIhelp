@@ -8,18 +8,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: PoiskPage(),
+      home: DialoguePage(),
     );
   }
 }
-class PoiskPage extends StatefulWidget {
-  PoiskPage({Key? key}) : super(key: key);
+class DialoguePage extends StatefulWidget {
+  DialoguePage({Key? key}) : super(key: key);
 
   @override
-  State<PoiskPage> createState() => _PoiskPageState();
+  State<DialoguePage> createState() => _DialoguePageState();
 }
 
-class _PoiskPageState extends State<PoiskPage> {
+class _DialoguePageState extends State<DialoguePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
