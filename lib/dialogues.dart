@@ -14,15 +14,15 @@ class _DialoguePageState extends State<DialoguePage> {
       body: SafeArea(
         child: Column(
           children: [
-            Search(),
-            Massage(),
+            search(),
+            message(),
           ],
         ),
       ),
     );
   }
 
-  Widget Search() {
+  Widget search() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -57,7 +57,7 @@ class _DialoguePageState extends State<DialoguePage> {
     );
   }
 
-  Widget Massage() {
+  Widget message() {
     return Column(
       children: [
         Container(
@@ -76,7 +76,7 @@ class _DialoguePageState extends State<DialoguePage> {
                 width: 50,
                 color: Colors.grey,
               ),
-              const Text('       '),
+              const SizedBox(width: 20),
               const Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -111,7 +111,7 @@ class _DialoguePageState extends State<DialoguePage> {
                 width: 50,
                 color: Colors.grey,
               ),
-              const Text('       '),
+              const SizedBox(width: 20),
               const Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -146,7 +146,7 @@ class _DialoguePageState extends State<DialoguePage> {
                 width: 50,
                 color: Colors.grey,
               ),
-              const Text('       '),
+              const SizedBox(width: 20),
               const Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

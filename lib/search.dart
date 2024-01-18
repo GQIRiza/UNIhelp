@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class SearchPage extends StatefulWidget {
-  const SearchPage({super.key});
+  const SearchPage({Key? key}) : super(key: key);
 
   @override
   _SearchPageState createState() => _SearchPageState();
@@ -14,16 +14,16 @@ class _SearchPageState extends State<SearchPage> {
       body: SafeArea(
         child: Column(
           children: [
-            Search(),
-            Categories(),
-            Types(),
+            search(),
+            categories(),
+            types(),
           ],
         ),
       ),
     );
   }
 
-  Widget Search() {
+  Widget search() {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
       child: SearchBar(
@@ -44,7 +44,7 @@ class _SearchPageState extends State<SearchPage> {
     );
   }
 
-  Widget Categories() {
+  Widget categories() {
     return Container(
       margin: const EdgeInsets.only(top: 10, left: 20),
       alignment: Alignment.centerLeft,
@@ -58,7 +58,7 @@ class _SearchPageState extends State<SearchPage> {
     );
   }
 
-  Widget Types() {
+  Widget types() {
     return Center(
       child: Column(
         children: [

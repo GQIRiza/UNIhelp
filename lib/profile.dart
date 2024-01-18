@@ -14,14 +14,14 @@ class _ProfilePageState extends State<ProfilePage> {
       body: SafeArea(
         child: Column(
           children: [
-            ProfilePic(),
+            profilePic(),
           ],
         ),
       ),
     );
   }
 
-  Widget ProfilePic() {
+  Widget profilePic() {
     return Container(
       alignment: Alignment.center,
       child: Image.network(
