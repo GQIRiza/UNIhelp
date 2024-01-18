@@ -27,6 +27,7 @@ class MyHomePage extends StatelessWidget {
           Welcome(),
           Registration(),
           Start(),
+          Login(),
         ],
       ),
     );
@@ -42,9 +43,17 @@ class MyHomePage extends StatelessWidget {
             style: TextStyle(color: Colors.white, fontFamily: "Ubuntu",
                 fontSize: 34),),
             Text(''),
-            Text('UNIhelp',
-              style: TextStyle(color: Colors.deepPurple[600], fontFamily: "Bubbles",
-                  fontSize: 70),),
+            Row( mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text('UNI',
+                  style: TextStyle(color: Colors.deepPurple[600], fontFamily: "Bubbles",
+                      fontSize: 70),),
+
+                Text('help',
+                  style: TextStyle(color: Colors.deepPurple[400], fontFamily: "Bubbles",
+                      fontSize: 70),),
+              ],
+            ),
           ],
         ),
       ),
@@ -78,10 +87,21 @@ class MyHomePage extends StatelessWidget {
       width: 250, height: 50,
       child: Center(
         child: Text("Зарегестрироваться", style: TextStyle(
-          fontFamily: "Ubuntu",fontSize: 24, color: Colors.white,
+          fontSize: 24, color: Colors.white,
         ),
         ),
       ),);
+  }
+
+  Widget Login(){
+    return Column( mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+      Text('Уже есть аккаунт?', style: TextStyle(fontSize: 24, color: Colors.white),),
+
+      Text('Войти', style: TextStyle(fontSize: 24, color: Colors.white, fontWeight: FontWeight.w600),)
+    ],
+
+    );
   }
 
 }
