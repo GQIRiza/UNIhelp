@@ -15,17 +15,14 @@ class _DialoguePageState extends State<DialoguePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Center(child: const Text(
-          'UNIhelp', style: TextStyle(fontSize: 30, fontFamily: 'Ubuntu'),)),
-        backgroundColor: Color(0xff9fa8da),
-      ),
 
-      body: Column(
-        children: [
-          Search(),
-          Massage(),
-        ],
+      body: SafeArea(
+        child: Column(
+          children: [
+            Search(),
+            Massage(),
+          ],
+        ),
       ),
     );
   }

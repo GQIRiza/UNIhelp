@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 
-
-
-
 class ProfilePage extends StatefulWidget {
   ProfilePage({Key? key}) : super(key: key);
 
@@ -14,20 +11,12 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Center(
-            child: const Text(
-          'UNIhelp',
-          style: TextStyle(fontSize: 30, fontFamily: 'Ubuntu'),
-        )),
-        backgroundColor: Color(0xff9fa8da),
-      ),
-
-
-      body: Column(
-        children: [
-          ProfiPic(),
-        ],
+      body: SafeArea(
+        child: Column(
+          children: [
+            ProfiPic(),
+          ],
+        ),
       ),
     );
   }

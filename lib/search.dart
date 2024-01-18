@@ -1,33 +1,23 @@
 import 'package:flutter/material.dart';
 
-
 class SearchPage extends StatefulWidget {
   @override
   _SearchPageState createState() => _SearchPageState();
 }
 
 class _SearchPageState extends State<SearchPage> {
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Center(
-            child: const Text(
-          'UNIhelp',
-          style: TextStyle(fontSize: 30, fontFamily: 'Ubuntu'),
-        )),
-        backgroundColor: Color(0xff9fa8da),
-      ),
-
-      body: Column(
-        children: [
-          Pusto(),
-          Search(),
-          Categorii(),
-          Types(),
-        ],
+      body: SafeArea(
+        child: Column(
+          children: [
+            Pusto(),
+            Search(),
+            Categorii(),
+            Types(),
+          ],
+        ),
       ),
     );
   }
