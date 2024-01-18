@@ -5,7 +5,7 @@ import 'package:unihelp/bloc/api_bloc.dart';
 import 'package:unihelp/bloc/api_events.dart';
 import 'package:unihelp/bloc/api_states.dart';
 import 'package:unihelp/dialogues.dart';
-import 'package:unihelp/poisk.dart';
+import 'package:unihelp/search.dart';
 import 'package:unihelp/profile.dart';
 
 
@@ -40,7 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
     BlocProvider.of<ApiBloc>(context)
-        .add(PoiskEvent()); // Dispatch an event to fetch the list of notes
+        .add(SearchEvent()); // Dispatch an event to fetch the list of notes
   }
 
   @override
@@ -67,7 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
             _selectedIndex = index;
           });
           if (index == 0) {
-            BlocProvider.of<ApiBloc>(context).add(PoiskEvent());
+            BlocProvider.of<ApiBloc>(context).add(SearchEvent());
           } else if (index == 1) {
             BlocProvider.of<ApiBloc>(context).add(ProfileEvent());
           } else if (index == 2) {
@@ -91,8 +91,8 @@ class _MyHomePageState extends State<MyHomePage> {
         return Center(
           child: Text("Error"),
         ); // Show an error message if there's an error state
-      } else if (state is PoiskState) {
-        return PoiskPage();
+      } else if (state is SearchState) {
+        return SearchPage();
       } else if (state is DialogState) {
         return DialoguePage();
       } else if (state is ProfileState) {

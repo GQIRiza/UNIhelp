@@ -1,6 +1,6 @@
 abstract class ApiEvents {}
 
-class PoiskEvent extends ApiEvents {}
+class SearchEvent extends ApiEvents {}
 
 class DialogEvent extends ApiEvents {}
 

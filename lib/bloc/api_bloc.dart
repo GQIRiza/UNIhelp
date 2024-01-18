@@ -3,16 +3,16 @@ import 'api_events.dart';
 import 'api_states.dart';
 
 class ApiBloc extends Bloc<ApiEvents, ApiStates> {
-  ApiBloc() : super(PoiskState()) {
-    on<PoiskEvent>(_getPoiskPage);
+  ApiBloc() : super(SearchState()) {
+    on<SearchEvent>(_getSearchPage);
     on<DialogEvent>(_getDialogPage);
     on<ProfileEvent>(_getProfilePage);
   }
 
-  _getPoiskPage(PoiskEvent event, Emitter<ApiStates> emitter) async {
+  _getSearchPage(SearchEvent event, Emitter<ApiStates> emitter) async {
     emit(LoadingState()); // Emit loading state
     try {
-      emitter(PoiskState()); // Emit note list state with the fetched notes
+      emitter(SearchState()); // Emit note list state with the fetched notes
     } catch (error) {
       print(error);
       emitter(ErrorState()); // Emit error state in case of an error

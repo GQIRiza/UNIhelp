@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 
-class PoiskPage extends StatefulWidget {
+class SearchPage extends StatefulWidget {
   @override
-  _PoiskPageState createState() => _PoiskPageState();
+  _SearchPageState createState() => _SearchPageState();
 }
 
-class _PoiskPageState extends State<PoiskPage> {
+class _SearchPageState extends State<SearchPage> {
 
 
   @override
