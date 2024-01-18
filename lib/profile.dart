@@ -12,6 +12,7 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: [Icon(Icons.change_circle_outlined, size: 35,)],
         title: Center(
             child: const Text(
               'UNIhelp',
@@ -24,6 +25,9 @@ class _ProfilePageState extends State<ProfilePage> {
       body: Column(
         children: [
           ProfiPic(),
+          UserName(),
+          Userid(),
+          Okna(),
         ],
       ),
     );
@@ -49,6 +53,19 @@ class _ProfilePageState extends State<ProfilePage> {
     return Container(
       alignment: Alignment.center,
       child: Text('@userID1', style: TextStyle(fontSize: 20),),
+    );
+  }
+  Widget Okna(){
+     return Container(padding: EdgeInsets.all(10),
+      alignment: Alignment.center,
+      height: 70,
+      decoration: BoxDecoration(color: Colors.grey[100],),
+      child: Row(
+        children: [
+              Text('тут будет карта', style: TextStyle(fontSize: 20, fontFamily: "Inter",color: Colors.black),),
+              Text('Способы оплаты', style: TextStyle(fontSize: 16, fontFamily: "Inter",color: Colors.black),),
+            ],
+      ),
     );
   }
 }
