@@ -17,7 +17,7 @@ class _ProfilePageState extends State<ProfilePage> {
       body: SafeArea(
         child: Column(
           children: [
-            ProfiPic(),
+            profipic(),
             UserName(),
             Userid(),
             Student(),
@@ -29,16 +29,17 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
-  Widget ProfiPic() {
-    return Container(
+  Widget profipic() {
+    return Container( width: 200,
+      margin: EdgeInsets.only(top: 5),
       alignment: Alignment.center,
       child: Image.network(
         'https://cs12.pikabu.ru/post_img/big/2022/03/21/10/164788475811377451.jpg',
-        height: 200,
-        width: 200,
+        fit: BoxFit.fill,
       ),
     );
   }
+
 
   Widget UserName() {
     return Container(
@@ -100,6 +101,20 @@ class _ProfilePageState extends State<ProfilePage> {
       children: [
         Container(
           margin: EdgeInsets.only(top: 6),
+          padding: const EdgeInsets.all(10),
+          alignment: Alignment.centerLeft,
+          height: 60,
+          decoration: BoxDecoration(
+            color: Colors.grey[100],
+          ),
+          child: Text(
+            'Редактировать профиль',
+            style: TextStyle(
+                fontSize: 20, fontFamily: "Inter", color: Colors.black),
+          ),
+        ),
+        Container(
+
           padding: const EdgeInsets.all(10),
           alignment: Alignment.centerLeft,
           height: 60,
