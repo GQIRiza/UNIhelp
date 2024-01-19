@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:unihelp/date/uni.dart';
 import 'api_events.dart';
 import 'api_states.dart';
 
@@ -46,7 +48,17 @@ class ApiBloc extends Bloc<ApiEvents, ApiStates> {
   _getUnisPage(UnisEvent event, Emitter<ApiStates> emitter) async {
     emitter(LoadingState()); // Emit loading state
     try {
-      emitter(UnisState()); // Emit note list state with the fetched notes
+      final QuerySnapshot querySnapshot =
+      await FirebaseFirestore.instance.collection('unis').get();
+      // Fetch data from Firestore
+      List<Uni> unis = await querySnapshot.docs.map((doc) {
+        return Uni(
+          id: doc.id,
+          title: doc['title'],
+          labelUrl: doc['labelUrl'],
+        );
+      }).toList();
+      emitter(UnisState(unis));
     } catch (error) {
       print(error);
       emitter(ErrorState()); // Emit error state in case of an error
@@ -56,7 +68,7 @@ class ApiBloc extends Bloc<ApiEvents, ApiStates> {
   _getDisciplinesPage(DisciplinesEvent event, Emitter<ApiStates> emitter) async {
     emitter(LoadingState()); // Emit loading state
     try {
-      emitter(DisciplinesState()); // Emit note list state with the fetched notes
+      emitter(DisciplinesState());
     } catch (error) {
       print(error);
       emitter(ErrorState()); // Emit error state in case of an error
@@ -66,7 +78,7 @@ class ApiBloc extends Bloc<ApiEvents, ApiStates> {
   _getTypesPage(TypesEvent event, Emitter<ApiStates> emitter) async {
     emitter(LoadingState()); // Emit loading state
     try {
-      emitter(TypesState()); // Emit note list state with the fetched notes
+      emitter(TypesState());
     } catch (error) {
       print(error);
       emitter(ErrorState()); // Emit error state in case of an error
@@ -76,7 +88,7 @@ class ApiBloc extends Bloc<ApiEvents, ApiStates> {
   _getStartPage(StartEvent event, Emitter<ApiStates> emitter) async {
     emitter(LoadingState()); // Emit loading state
     try {
-      emitter(StartState()); // Emit note list state with the fetched notes
+      emitter(StartState());
     } catch (error) {
       print(error);
       emitter(ErrorState()); // Emit error state in case of an error

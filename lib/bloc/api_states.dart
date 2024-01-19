@@ -1,3 +1,5 @@
+import 'package:unihelp/date/uni.dart';
+
 abstract class ApiStates {}
 
 class InitState extends ApiStates {}
@@ -12,7 +14,11 @@ class DialogState extends ApiStates {}
 
 class ProfileState extends ApiStates {}
 
-class UnisState extends ApiStates {}
+class UnisState extends ApiStates {
+  final List<Uni> unis;
+
+  UnisState(this.unis);
+}
 
 class TypesState extends ApiStates {}
 

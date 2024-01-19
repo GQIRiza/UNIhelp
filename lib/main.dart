@@ -1,6 +1,8 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:unihelp/firebase_options.dart';
 import 'package:unihelp/typesWork.dart';
 import 'package:unihelp/bloc/api_bloc.dart';
 import 'package:unihelp/bloc/api_events.dart';
@@ -12,7 +14,13 @@ import 'package:unihelp/profile.dart';
 import 'package:unihelp/start.dart';
 import 'package:unihelp/unis.dart';
 
-void main() => runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -100,7 +108,7 @@ class _MyHomePageState extends State<MyHomePage> {
       } else if (state is ProfileState) {
         return const ProfilePage();
       } else if (state is UnisState) {
-        return const UnisPage();
+        return UnisPage(unis: state.unis);
       } else if (state is DisciplinesState) {
         return const DisciplinesPage();
       } else if (state is TypesState) {

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1046897101860",
+    "project_id": "unihelp-real",
+    "storage_bucket": "unihelp-real.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1046897101860:android:82e5bf3fd5b3386d1a1cb1",
+        "android_client_info": {
+          "package_name": "com.unihelp_team.unihelp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPS7T6nAFwyGhQB4pH3w3mQyRRo2Uv3TE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
