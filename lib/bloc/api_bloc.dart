@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:unihelp/date/discipline.dart';
 import 'package:unihelp/date/uni.dart';
 import 'api_events.dart';
 import 'api_states.dart';
@@ -68,7 +69,16 @@ class ApiBloc extends Bloc<ApiEvents, ApiStates> {
   _getDisciplinesPage(DisciplinesEvent event, Emitter<ApiStates> emitter) async {
     emitter(LoadingState()); // Emit loading state
     try {
-      emitter(DisciplinesState());
+      final QuerySnapshot querySnapshot =
+      await FirebaseFirestore.instance.collection('disciplines').get();
+      // Fetch data from Firestore
+      List<Discipline> disciplines = await querySnapshot.docs.map((doc) {
+        return Discipline(
+          id: doc.id,
+          title: doc['title'],
+        );
+      }).toList();
+      emitter(DisciplinesState(disciplines));
     } catch (error) {
       print(error);
       emitter(ErrorState()); // Emit error state in case of an error

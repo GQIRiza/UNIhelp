@@ -1,3 +1,4 @@
+import 'package:unihelp/date/discipline.dart';
 import 'package:unihelp/date/uni.dart';
 
 abstract class ApiStates {}
@@ -24,4 +25,8 @@ class TypesState extends ApiStates {}
 
 class StartState extends ApiStates {}
 
-class DisciplinesState extends ApiStates {}
+class DisciplinesState extends ApiStates {
+  final List<Discipline> disciplines;
+
+  DisciplinesState(this.disciplines);
+}

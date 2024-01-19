@@ -106,11 +106,11 @@ class _MyHomePageState extends State<MyHomePage> {
       } else if (state is DialogState) {
         return const DialoguePage();
       } else if (state is ProfileState) {
-        return const ProfilePage();
+        return ProfilePage();
       } else if (state is UnisState) {
         return UnisPage(unis: state.unis);
       } else if (state is DisciplinesState) {
-        return const DisciplinesPage();
+        return DisciplinesPage(disciplines: state.disciplines);
       } else if (state is TypesState) {
         return const TypesPage();
       } else if (state is StartState) {
