@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
 
-
-
 class ProfilePage extends StatefulWidget {
   ProfilePage({Key? key}) : super(key: key);
 
@@ -27,6 +25,8 @@ class _ProfilePageState extends State<ProfilePage> {
       body: Column(
         children: [
           ProfiPic(),
+          UserName(),
+          Userid(),
         ],
       ),
     );
@@ -42,4 +42,17 @@ class _ProfilePageState extends State<ProfilePage> {
       ),
     );
   }
+  Widget UserName(){
+    return Container(
+      alignment: Alignment.center,
+      child: Text('Имя Фамилия', style: TextStyle(fontSize: 28),),
+    );
+  }
+  Widget Userid(){
+    return Container(
+      alignment: Alignment.center,
+      child: Text('@userID1', style: TextStyle(fontSize: 20),),
+    );
+  }
+
 }
