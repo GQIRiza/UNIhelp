@@ -11,3 +11,11 @@ class SearchState extends ApiStates {}
 class DialogState extends ApiStates {}
 
 class ProfileState extends ApiStates {}
+
+class UnisState extends ApiStates {}
+
+class TypesState extends ApiStates {}
+
+class StartState extends ApiStates {}
+
+class DisciplinesState extends ApiStates {}

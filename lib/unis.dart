@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:unihelp/bloc/api_bloc.dart';
+import 'package:unihelp/bloc/api_events.dart';
 
 class UnisPage extends StatefulWidget {
+  const UnisPage({super.key});
+
   @override
   _UnisPageState createState() => _UnisPageState();
 }
@@ -9,49 +14,54 @@ class _UnisPageState extends State<UnisPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        toolbarHeight: 60,
+        title: const Text(
+          'Университеты',
+          textAlign: TextAlign.left,
+          style: TextStyle(
+            fontSize: 26,
+            color: Colors.black,
+          ),
+        ),
+        titleSpacing: 0,
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back_ios_new_rounded,
+            color: Colors.black,
+          ),
+          onPressed: () {
+            BlocProvider.of<ApiBloc>(context).add(SearchEvent());
+          },
+        ),
+      ),
       body: SafeArea(
-        child: Column(
-          children: [
-            Name(),
-            Types(),
-          ],
+        child: Scrollbar(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                types(),
+              ],
+            ),
+          ),
         ),
       ),
     );
   }
 
 
-  Widget Name() {
-    return Container(
-      margin: EdgeInsets.only(top: 30, left: 10, bottom: 10),
-      alignment: Alignment.centerLeft,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children:<Widget>[
-          Icon( Icons.arrow_back_ios_new_rounded,),
-          Text(
-            'Университеты',
-            textAlign: TextAlign.left,
-            style: TextStyle(
-              fontSize: 26,
-            ),
-          ),
-        ],
-      ),
-    );
-    onTap:(){};
-  }
-
-  Widget Types() {
+  Widget types() {
     return Center(
       child: Column(
         children: [
           Container(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             alignment: Alignment.center,
             width: 370,
             height: 80,
-            margin: EdgeInsets.only(top: 14),
+            margin: const EdgeInsets.only(top: 14),
             decoration: BoxDecoration(
                 color: Colors.deepPurple[100],
                 borderRadius: BorderRadius.circular(20)),
@@ -62,8 +72,8 @@ class _UnisPageState extends State<UnisPage> {
                   height: 50,
                   width: 50,
                 ),
-                Text('       '),
-                Text(
+                const Text('       '),
+                const Text(
                   'СПБГУ',
                   style: TextStyle(
                       fontSize: 26, fontFamily: "Inter", color: Colors.black),
@@ -71,13 +81,12 @@ class _UnisPageState extends State<UnisPage> {
               ],
             ),
           ),
-
           Container(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             alignment: Alignment.center,
             width: 370,
             height: 80,
-            margin: EdgeInsets.only(top: 20),
+            margin: const EdgeInsets.only(top: 20),
             decoration: BoxDecoration(
                 color: Colors.deepPurple[100],
                 borderRadius: BorderRadius.circular(20)),
@@ -88,8 +97,8 @@ class _UnisPageState extends State<UnisPage> {
                   height: 50,
                   width: 50,
                 ),
-                Text('       '),
-                Text(
+                const Text('       '),
+                const Text(
                   'СПБПУ',
                   style: TextStyle(
                       fontSize: 26, fontFamily: "Inter", color: Colors.black),
@@ -98,11 +107,11 @@ class _UnisPageState extends State<UnisPage> {
             ),
           ),
           Container(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             alignment: Alignment.center,
             width: 370,
             height: 80,
-            margin: EdgeInsets.only(top: 20),
+            margin: const EdgeInsets.only(top: 20),
             decoration: BoxDecoration(
                 color: Colors.deepPurple[100],
                 borderRadius: BorderRadius.circular(20)),
@@ -113,8 +122,8 @@ class _UnisPageState extends State<UnisPage> {
                   height: 60,
                   width: 60,
                 ),
-                Text('       '),
-                Text(
+                const Text('       '),
+                const Text(
                   'ИТМО',
                   style: TextStyle(
                       fontSize: 26, fontFamily: "Inter", color: Colors.black),

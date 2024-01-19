@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:unihelp/typesWork.dart';
 import 'package:unihelp/bloc/api_bloc.dart';
 import 'package:unihelp/bloc/api_events.dart';
 import 'package:unihelp/bloc/api_states.dart';
 import 'package:unihelp/dialogues.dart';
+import 'package:unihelp/disciplines.dart';
 import 'package:unihelp/search.dart';
 import 'package:unihelp/profile.dart';
+import 'package:unihelp/start.dart';
+import 'package:unihelp/unis.dart';
 
 void main() => runApp(const MyApp());
 
@@ -95,6 +99,14 @@ class _MyHomePageState extends State<MyHomePage> {
         return const DialoguePage();
       } else if (state is ProfileState) {
         return const ProfilePage();
+      } else if (state is UnisState) {
+        return const UnisPage();
+      } else if (state is DisciplinesState) {
+        return const DisciplinesPage();
+      } else if (state is TypesState) {
+        return const TypesPage();
+      } else if (state is StartState) {
+        return const StartPage();
       } else {
         return const Text(
           "Nothing",
