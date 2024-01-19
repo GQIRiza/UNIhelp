@@ -1,9 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:unihelp/date/discipline.dart';
-import 'package:unihelp/date/uni.dart';
+import 'package:unihelp/models/discipline.dart';
+import 'package:unihelp/models/type.dart';
+import 'package:unihelp/models/uni.dart';
 import 'api_events.dart';
 import 'api_states.dart';
+import 'authentication_state.dart';
 
 class ApiBloc extends Bloc<ApiEvents, ApiStates> {
   ApiBloc() : super(StartState()) {
@@ -49,9 +51,9 @@ class ApiBloc extends Bloc<ApiEvents, ApiStates> {
   _getUnisPage(UnisEvent event, Emitter<ApiStates> emitter) async {
     emitter(LoadingState()); // Emit loading state
     try {
-      final QuerySnapshot querySnapshot =
-      await FirebaseFirestore.instance.collection('unis').get();
-      // Fetch data from Firestore
+      final QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+          .collection('unis')
+          .get(); // Fetch data from Firestore
       List<Uni> unis = await querySnapshot.docs.map((doc) {
         return Uni(
           id: doc.id,
@@ -66,12 +68,13 @@ class ApiBloc extends Bloc<ApiEvents, ApiStates> {
     }
   }
 
-  _getDisciplinesPage(DisciplinesEvent event, Emitter<ApiStates> emitter) async {
+  _getDisciplinesPage(
+      DisciplinesEvent event, Emitter<ApiStates> emitter) async {
     emitter(LoadingState()); // Emit loading state
     try {
-      final QuerySnapshot querySnapshot =
-      await FirebaseFirestore.instance.collection('disciplines').get();
-      // Fetch data from Firestore
+      final QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+          .collection('disciplines')
+          .get(); // Fetch data from Firestore
       List<Discipline> disciplines = await querySnapshot.docs.map((doc) {
         return Discipline(
           id: doc.id,
@@ -88,7 +91,16 @@ class ApiBloc extends Bloc<ApiEvents, ApiStates> {
   _getTypesPage(TypesEvent event, Emitter<ApiStates> emitter) async {
     emitter(LoadingState()); // Emit loading state
     try {
-      emitter(TypesState());
+      final QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+          .collection('types')
+          .get(); // Fetch data from Firestore
+      List<TypeOfWork> typeOfWork = await querySnapshot.docs.map((doc) {
+        return TypeOfWork(
+          id: doc.id,
+          title: doc['title'],
+        );
+      }).toList();
+      emitter(TypesState(typeOfWork));
     } catch (error) {
       print(error);
       emitter(ErrorState()); // Emit error state in case of an error
@@ -104,4 +116,6 @@ class ApiBloc extends Bloc<ApiEvents, ApiStates> {
       emitter(ErrorState()); // Emit error state in case of an error
     }
   }
+
+
 }

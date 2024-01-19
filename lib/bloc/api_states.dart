@@ -1,5 +1,6 @@
-import 'package:unihelp/date/discipline.dart';
-import 'package:unihelp/date/uni.dart';
+import 'package:unihelp/models/discipline.dart';
+import 'package:unihelp/models/type.dart';
+import 'package:unihelp/models/uni.dart';
 
 abstract class ApiStates {}
 
@@ -21,7 +22,11 @@ class UnisState extends ApiStates {
   UnisState(this.unis);
 }
 
-class TypesState extends ApiStates {}
+class TypesState extends ApiStates {
+  final List<TypeOfWork> types;
+
+  TypesState(this.types);
+}
 
 class StartState extends ApiStates {}
 

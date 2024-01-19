@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:unihelp/bloc/AuthenticationBloc.dart';
+import 'package:unihelp/bloc/authentication_Event.dart';
 
 class ProfilePage extends StatefulWidget {
   ProfilePage({Key? key}) : super(key: key);
@@ -18,6 +21,7 @@ class _ProfilePageState extends State<ProfilePage> {
             UserName(),
             Userid(),
             Student(),
+            logOut(),
             Settings(),
           ],
         ),
@@ -68,6 +72,25 @@ class _ProfilePageState extends State<ProfilePage> {
       child: Text(
         'Студент',
         style: TextStyle(fontSize: 16),
+      ),
+    );
+  }
+
+  Widget logOut() {
+    return InkWell(
+      onTap: () => BlocProvider.of<AuthenticationBloc>(context).add(SignOut()),
+      child: Container(
+        alignment: Alignment.center,
+        margin: EdgeInsets.only(top: 6),
+        width: 200,
+        height: 30,
+        decoration: BoxDecoration(
+            color: Colors.deepPurple[100],
+            borderRadius: BorderRadius.circular(20)),
+        child: Text(
+          'Logout',
+          style: TextStyle(fontSize: 16),
+        ),
       ),
     );
   }

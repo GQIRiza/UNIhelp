@@ -4,6 +4,7 @@ import 'package:unihelp/bloc/api_bloc.dart';
 import 'package:unihelp/bloc/api_events.dart';
 
 class SearchPage extends StatefulWidget {
+
   const SearchPage({Key? key}) : super(key: key);
 
   @override
@@ -11,6 +12,7 @@ class SearchPage extends StatefulWidget {
 }
 
 class _SearchPageState extends State<SearchPage> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

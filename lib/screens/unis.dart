@@ -2,19 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:unihelp/bloc/api_bloc.dart';
 import 'package:unihelp/bloc/api_events.dart';
-import 'package:unihelp/date/discipline.dart';
+import 'package:unihelp/models/uni.dart';
 
-class DisciplinesPage extends StatefulWidget {
-  final List<Discipline> disciplines; // Параметр для списка университетов
+class UnisPage extends StatefulWidget {
+  final List<Uni> unis; // Параметр для списка университетов
 
-  const DisciplinesPage({Key? key, required this.disciplines})
-      : super(key: key);
+  const UnisPage({Key? key, required this.unis}) : super(key: key);
 
   @override
-  _DisciplinesPageState createState() => _DisciplinesPageState();
+  _UnisPageState createState() => _UnisPageState();
 }
 
-class _DisciplinesPageState extends State<DisciplinesPage> {
+class _UnisPageState extends State<UnisPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +22,7 @@ class _DisciplinesPageState extends State<DisciplinesPage> {
         elevation: 0,
         toolbarHeight: 60,
         title: const Text(
-          'Предметы',
+          'Университеты',
           textAlign: TextAlign.left,
           style: TextStyle(
             fontSize: 26,
@@ -44,7 +43,7 @@ class _DisciplinesPageState extends State<DisciplinesPage> {
       body: SafeArea(
         child: Scrollbar(
           child: ListView.builder(
-            itemCount: widget.disciplines.length,
+            itemCount: widget.unis.length,
             itemBuilder: (BuildContext context, int index) {
               return Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -54,13 +53,16 @@ class _DisciplinesPageState extends State<DisciplinesPage> {
                   height: 80,
                   margin: const EdgeInsets.only(top: 14),
                   decoration: BoxDecoration(
-                    color: Colors.deepPurple[100],
-                    borderRadius: BorderRadius.circular(20),
-                  ),
+                      color: Colors.deepPurple[100],
+                      borderRadius: BorderRadius.circular(20)),
                   child: ListTile(
-                    title: Text(widget.disciplines[index].title),
-                    trailing: const Icon(Icons.arrow_forward_ios_rounded,
-                        color: Colors.black),
+                    title: Text(widget.unis[index].title),
+                    leading: Image.network(
+                      widget.unis[index].labelUrl,
+                      height: 50,
+                      width: 50,
+                    ),
+                    trailing: const Icon(Icons.arrow_forward_ios_rounded,color: Colors.black),
                     onTap: () {
                       // Обработка нажатия на элемент списка
                     },
