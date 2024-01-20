@@ -1,8 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:unihelp/bloc/AuthenticationBloc.dart';
+import 'package:unihelp/bloc/authentication_Event.dart';
 import 'package:unihelp/firebase_options.dart';
 import 'package:unihelp/screens/authentication_page.dart';
 import 'package:unihelp/screens/profile.dart';
@@ -46,7 +48,6 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-
   const MyHomePage({Key? key}) : super(key: key);
 
   @override
@@ -89,7 +90,8 @@ class _MyHomePageState extends State<MyHomePage> {
           if (index == 0) {
             BlocProvider.of<ApiBloc>(context).add(SearchEvent());
           } else if (index == 1) {
-            BlocProvider.of<ApiBloc>(context).add(ProfileEvent());
+            User user = FirebaseAuth.instance.currentUser!;
+            BlocProvider.of<ApiBloc>(context).add(ProfileEvent(user.uid));
           } else if (index == 2) {
             BlocProvider.of<ApiBloc>(context).add(DialogEvent());
           }
@@ -100,6 +102,4 @@ class _MyHomePageState extends State<MyHomePage> {
           const AuthenticationFlowScreen(), // Build the UI based on the current state
     );
   }
-
-
 }

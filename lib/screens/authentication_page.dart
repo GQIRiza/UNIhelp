@@ -7,6 +7,7 @@ import 'package:unihelp/screens/dialogues.dart';
 import 'package:unihelp/screens/disciplines.dart';
 import 'package:unihelp/screens/login.dart';
 import 'package:unihelp/screens/profile.dart';
+import 'package:unihelp/screens/redactor.dart';
 import 'package:unihelp/screens/search.dart';
 import 'package:unihelp/screens/sign_up.dart';
 import 'package:unihelp/screens/start.dart';
@@ -15,7 +16,9 @@ import 'package:unihelp/screens/unis.dart';
 
 class AuthenticationFlowScreen extends StatelessWidget {
   const AuthenticationFlowScreen({super.key});
+
   static String id = 'main screen';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +26,8 @@ class AuthenticationFlowScreen extends StatelessWidget {
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return buildBloc();
+            print(snapshot.data);
+            return buildBloc(snapshot.data);
           } else {
             return const LoginPage();
           }
@@ -31,7 +35,8 @@ class AuthenticationFlowScreen extends StatelessWidget {
       ),
     );
   }
-  Widget buildBloc() {
+
+  Widget buildBloc(user) {
     return BlocBuilder<ApiBloc, ApiStates>(builder: (context, state) {
       print(state);
       if (state is LoadingState) {
@@ -47,7 +52,9 @@ class AuthenticationFlowScreen extends StatelessWidget {
       } else if (state is DialogState) {
         return DialoguePage();
       } else if (state is ProfileState) {
-        return ProfilePage();
+        return ProfilePage(user: state.user,);
+      } else if (state is EditProfileState) {
+        return EditProfilePage(user: state.user,);
       } else if (state is UnisState) {
         return UnisPage(unis: state.unis);
       } else if (state is DisciplinesState) {

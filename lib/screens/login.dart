@@ -113,11 +113,11 @@ class _LoginPage extends State<LoginPage> {
       padding: const EdgeInsets.all(8.0),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.indigo[300], // Цвет кнопки
+          backgroundColor: Colors.indigo[300],
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20), // Закругленные углы
+            borderRadius: BorderRadius.circular(20),
           ),
-          minimumSize: Size(250, 50), // Минимальный размер кнопки
+          minimumSize: Size(250, 50),
         ),
         onPressed: () {
           BlocProvider.of<AuthenticationBloc>(context).add(
@@ -143,11 +143,11 @@ class _LoginPage extends State<LoginPage> {
       padding: const EdgeInsets.all(8.0),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.deepPurple, // Цвет кнопки
+          backgroundColor: Colors.deepPurple,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20), // Закругленные углы
+            borderRadius: BorderRadius.circular(20),
           ),
-          minimumSize: Size(250, 50), // Минимальный размер кнопки
+          minimumSize: Size(250, 50),
         ),
         onPressed: () {
           BlocProvider.of<AuthenticationBloc>(context).add(

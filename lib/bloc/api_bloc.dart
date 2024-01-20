@@ -1,17 +1,20 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:unihelp/bloc/authentication_state.dart';
 import 'package:unihelp/models/discipline.dart';
 import 'package:unihelp/models/type.dart';
 import 'package:unihelp/models/uni.dart';
+import 'package:unihelp/models/user.dart';
+import 'package:unihelp/services/get_profile.dart';
 import 'api_events.dart';
 import 'api_states.dart';
-import 'authentication_state.dart';
 
 class ApiBloc extends Bloc<ApiEvents, ApiStates> {
   ApiBloc() : super(StartState()) {
     on<SearchEvent>(_getSearchPage);
     on<DialogEvent>(_getDialogPage);
     on<ProfileEvent>(_getProfilePage);
+    on<EditProfileEvent>(_getEditProfilePage);
     on<UnisEvent>(_getUnisPage);
     on<DisciplinesEvent>(_getDisciplinesPage);
     on<TypesEvent>(_getTypesPage);
@@ -41,7 +44,23 @@ class ApiBloc extends Bloc<ApiEvents, ApiStates> {
   _getProfilePage(ProfileEvent event, Emitter<ApiStates> emitter) async {
     emitter(LoadingState()); // Emit loading state
     try {
-      emitter(ProfileState()); // Emit note list state with the fetched notes
+      UserModel user = await getProfile(event.uid);
+
+      emitter(ProfileState(user));
+    } catch (error) {
+      print(error);
+      emitter(ErrorState());
+    }
+  }
+
+  _getEditProfilePage(
+      EditProfileEvent event, Emitter<ApiStates> emitter) async {
+    emitter(LoadingState()); // Emit loading state
+    try {
+      UserModel user = await getProfile(event.uid);
+
+      emitter(EditProfileState(
+          user)); // Emit note list state with the fetched notes
     } catch (error) {
       print(error);
       emitter(ErrorState()); // Emit error state in case of an error
@@ -116,6 +135,4 @@ class ApiBloc extends Bloc<ApiEvents, ApiStates> {
       emitter(ErrorState()); // Emit error state in case of an error
     }
   }
-
-
 }

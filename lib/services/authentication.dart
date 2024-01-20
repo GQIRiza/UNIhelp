@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:unihelp/models/user.dart';
 
@@ -17,11 +18,24 @@ class AuthService {
       );
       final User? firebaseUser = userCredential.user;
       if (firebaseUser != null) {
-        return UserModel(
-          id: firebaseUser.uid,
+        UserModel newUser = UserModel(
+          uid: firebaseUser.uid,
+          id: '',
           email: firebaseUser.email ?? '',
           displayName: firebaseUser.displayName ?? '',
         );
+        print('Ошибка');
+        CollectionReference users =
+            FirebaseFirestore.instance.collection('users');
+
+        await users.doc(newUser.uid).set({
+          'uid': newUser.uid,
+          'id': newUser.id,
+          'email': newUser.email,
+          'displayName': newUser.displayName,
+        });
+
+        return newUser;
       }
     } on FirebaseAuthException catch (e) {
       print(e.toString());
@@ -47,7 +61,7 @@ class AuthService {
       final User? firebaseUser = userCredential.user;
       if (firebaseUser != null) {
         return UserModel(
-          id: firebaseUser.uid,
+          uid: firebaseUser.uid,
           email: firebaseUser.email ?? '',
           displayName: firebaseUser.displayName ?? '',
         );
