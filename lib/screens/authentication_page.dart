@@ -12,9 +12,6 @@ import 'package:unihelp/screens/search.dart';
 import 'package:unihelp/screens/start.dart';
 import 'package:unihelp/screens/types_work.dart';
 import 'package:unihelp/screens/unis.dart';
-import 'package:unihelp/models/user.dart';
-import 'package:unihelp/services/get_profile.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AuthenticationFlowScreen extends StatelessWidget {
   const AuthenticationFlowScreen({super.key});
@@ -27,35 +24,9 @@ class AuthenticationFlowScreen extends StatelessWidget {
       body: StreamBuilder<User?>(
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return CircularProgressIndicator(); // or any other loading indicator
-          } else if (snapshot.hasError) {
-            return Text('Error: ${snapshot.error}');
-          } else if (snapshot.hasData) {
-            User? user = snapshot.data;
-            if (user != null) {
-              return FutureBuilder<DocumentSnapshot>(
-                future: FirebaseFirestore.instance
-                    .collection('users')
-                    .doc(user.uid)
-                    .get(),
-                builder: (context, userSnapshot) {
-                  if (userSnapshot.connectionState == ConnectionState.waiting) {
-                    return CircularProgressIndicator(); // or any other loading indicator
-                  } else if (userSnapshot.hasError) {
-                    return Text('Error: ${userSnapshot.error}');
-                  } else if (userSnapshot.hasData &&
-                      userSnapshot.data!.exists) {
-                    print(snapshot.data);
-                    return buildBloc(snapshot.data);
-                  } else {
-                    return const LoginPage();
-                  }
-                },
-              );
-            } else {
-              return const LoginPage();
-            }
+          if (snapshot.hasData) {
+            print(snapshot.data);
+            return buildBloc(snapshot.data);
           } else {
             return const LoginPage();
           }
@@ -80,13 +51,9 @@ class AuthenticationFlowScreen extends StatelessWidget {
       } else if (state is DialogState) {
         return DialoguePage();
       } else if (state is ProfileState) {
-        return ProfilePage(
-          user: state.user,
-        );
+        return ProfilePage(user: state.user,);
       } else if (state is EditProfileState) {
-        return EditProfilePage(
-          user: state.user,
-        );
+        return EditProfilePage(user: state.user,);
       } else if (state is UnisState) {
         return UnisPage(unis: state.unis);
       } else if (state is DisciplinesState) {
