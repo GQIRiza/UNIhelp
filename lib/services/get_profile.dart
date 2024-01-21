@@ -15,6 +15,7 @@ Future<UserModel> getProfile(uid) async {
     );
     return user;
   } else {
+
     throw Exception('User not found');
   }
 }

@@ -23,6 +23,7 @@ class AuthService {
           id: '',
           email: firebaseUser.email ?? '',
           displayName: firebaseUser.displayName ?? '',
+          photoUrl: firebaseUser.photoURL ?? '',
         );
         print('Ошибка');
         CollectionReference users =
@@ -33,6 +34,7 @@ class AuthService {
           'id': newUser.id,
           'email': newUser.email,
           'displayName': newUser.displayName,
+          'photoUrl': newUser.photoUrl,
         });
 
         return newUser;
