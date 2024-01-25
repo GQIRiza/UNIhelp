@@ -41,6 +41,30 @@ class _EditProfilePageState extends State<EditProfilePage> {
 
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        toolbarHeight: 60,
+        title: const Text(
+          'Редактирование профиля',
+          textAlign: TextAlign.left,
+          style: TextStyle(
+            fontSize: 26,
+            color: Colors.black,
+          ),
+        ),
+        titleSpacing: 0,
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back_ios_new_rounded,
+            color: Colors.black,
+          ),
+          onPressed: () {
+            User user = FirebaseAuth.instance.currentUser!;
+            BlocProvider.of<ApiBloc>(context).add(ProfileEvent(user.uid));
+          },
+        ),
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
