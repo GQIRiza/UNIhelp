@@ -25,15 +25,17 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          children: [
-            profipic(),
-            UserName(widget.user),
-            email(widget.user),
-            Userid(widget.user),
-            Student(),
-            Settings(),
-          ],
+        child: SingleChildScrollView(scrollDirection: Axis.vertical,
+          child: Column(
+            children: [
+              profipic(),
+              UserName(widget.user),
+              email(widget.user),
+              Userid(widget.user),
+              Student(),
+              Settings(),
+            ],
+          ),
         ),
       ),
     );
@@ -172,6 +174,19 @@ class _ProfilePageState extends State<ProfilePage> {
           ),
           child: Text(
             'Поддержка',
+            style: TextStyle(
+                fontSize: 20, fontFamily: "Inter", color: Colors.black),
+          ),
+        ),
+        Container(
+          padding: const EdgeInsets.all(10),
+          alignment: Alignment.centerLeft,
+          height: 60,
+          decoration: BoxDecoration(
+            color: Colors.grey[100],
+          ),
+          child: Text(
+            'Мои задания',
             style: TextStyle(
                 fontSize: 20, fontFamily: "Inter", color: Colors.black),
           ),
