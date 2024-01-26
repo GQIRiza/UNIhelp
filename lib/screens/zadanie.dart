@@ -14,6 +14,11 @@ class _ZadaniePageState extends State<ZadaniePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        toolbarHeight: 30,
+      ),
       body: SafeArea(
         child: SingleChildScrollView( scrollDirection: Axis.vertical,
           child: Column(
@@ -45,7 +50,7 @@ class _ZadaniePageState extends State<ZadaniePage> {
     return Column(mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
-              margin: EdgeInsets.only(left: 20, bottom: 2, top: 20),
+              margin: EdgeInsets.only(left: 20, bottom: 2, top: 16),
               alignment: Alignment.centerLeft,
               child: Text('Университет', style: TextStyle(fontSize: 16,color: Colors.deepPurple),)),
           SizedBox(
