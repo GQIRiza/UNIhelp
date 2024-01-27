@@ -64,7 +64,7 @@ class _UnisPageState extends State<UnisPage> {
                     ),
                     trailing: const Icon(Icons.arrow_forward_ios_rounded,color: Colors.black),
                     onTap: () {
-                      // Обработка нажатия на элемент списка
+                      BlocProvider.of<ApiBloc>(context).add(ListWorksByFilterEvent(selectedUni: widget.unis[index].id));
                     },
                   ),
                 ),

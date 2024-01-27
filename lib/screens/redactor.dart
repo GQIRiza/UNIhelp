@@ -34,7 +34,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
   void initState() {
     super.initState();
     user = widget.user;
-    nameController.text = user.displayName ?? '';
+    nameController.text = user.title ?? '';
     idController.text = user.id ?? '';
     photoUrlController.text = user.photoUrl ?? '';
   }

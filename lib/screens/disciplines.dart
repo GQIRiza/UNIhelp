@@ -62,7 +62,7 @@ class _DisciplinesPageState extends State<DisciplinesPage> {
                     trailing: const Icon(Icons.arrow_forward_ios_rounded,
                         color: Colors.black),
                     onTap: () {
-                      // Обработка нажатия на элемент списка
+                      BlocProvider.of<ApiBloc>(context).add(ListWorksByFilterEvent(selectedDiscipline: widget.disciplines[index].id));
                     },
                   ),
                 ),

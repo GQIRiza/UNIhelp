@@ -3,13 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:unihelp/bloc/api_bloc.dart';
 import 'package:unihelp/bloc/api_states.dart';
+import 'package:unihelp/screens/add_work.dart';
 import 'package:unihelp/screens/dialogues.dart';
 import 'package:unihelp/screens/disciplines.dart';
+import 'package:unihelp/screens/list_work.dart';
 import 'package:unihelp/screens/login.dart';
 import 'package:unihelp/screens/profile.dart';
 import 'package:unihelp/screens/redactor.dart';
 import 'package:unihelp/screens/search.dart';
-import 'package:unihelp/screens/start.dart';
 import 'package:unihelp/screens/types_work.dart';
 import 'package:unihelp/screens/unis.dart';
 
@@ -51,17 +52,34 @@ class AuthenticationFlowScreen extends StatelessWidget {
       } else if (state is DialogState) {
         return DialoguePage();
       } else if (state is ProfileState) {
-        return ProfilePage(user: state.user,);
+        return ProfilePage(
+          user: state.user,
+        );
       } else if (state is EditProfileState) {
-        return EditProfilePage(user: state.user,);
+        return EditProfilePage(
+          user: state.user,
+        );
       } else if (state is UnisState) {
         return UnisPage(unis: state.unis);
       } else if (state is DisciplinesState) {
         return DisciplinesPage(disciplines: state.disciplines);
       } else if (state is TypesState) {
         return TypesPage(types: state.types);
-      } else if (state is StartState) {
-        return const StartPage();
+      } else if (state is AddWorkState) {
+        return AddWorkPage(
+            unis: state.unis,
+            disciplines: state.disciplines,
+            types: state.types);
+      } else if (state is AddWorkState) {
+        return AddWorkPage(
+            unis: state.unis,
+            disciplines: state.disciplines,
+            types: state.types);
+      } else if (state is ListWorksByFilterState) {
+        return ListWorksByFilterPage(
+            selectedUni: state.selectedUni,
+            selectedDiscipline: state.selectedDiscipline,
+            selectedType: state.selectedType);
       } else {
         return const Text(
           "Nothing",

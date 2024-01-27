@@ -5,22 +5,22 @@ class UserModel {
   late String uid;
   late String? id;
   late String email;
-  late String? displayName;
+  late String? title;
   String? photoUrl; // Необязательное поле для фото профиля
 
-  UserModel({this.id, required this.email, this.displayName, required this.uid, this.photoUrl});
+  UserModel({this.id, required this.email, this.title, required this.uid, this.photoUrl});
 
   factory UserModel.fromFirebaseUser(User user) {
     return UserModel(
       uid: user.uid,
       email: user.email ?? '',
-      displayName: user.displayName,
+      title: user.displayName,
       photoUrl: user.photoURL, // Используем photoURL из объекта User в качестве значения по умолчанию для photoUrl
     );
   }
 
   Future<void> updateUser(String newId, String newDisplayName, {String? newPhotoUrl}) async {
-    displayName = newDisplayName;
+    title = newDisplayName;
     id = newId;
     photoUrl = newPhotoUrl; // Обновляем photoUrl при необходимости
   }
@@ -32,7 +32,7 @@ class UserModel {
       'uid': uid,
       'id': id,
       'email': email,
-      'displayName': displayName,
+      'displayName': title,
       'photoUrl': photoUrl, // Добавляем photoUrl в данные для обновления на Firestore
     };
     await users.doc(uid).update(userData);

@@ -22,7 +22,7 @@ class AuthService {
           uid: firebaseUser.uid,
           id: '',
           email: firebaseUser.email ?? '',
-          displayName: firebaseUser.displayName ?? '',
+          title: firebaseUser.displayName ?? '',
           photoUrl: firebaseUser.photoURL ?? '',
         );
         print('Ошибка');
@@ -33,7 +33,7 @@ class AuthService {
           'uid': newUser.uid,
           'id': newUser.id,
           'email': newUser.email,
-          'displayName': newUser.displayName,
+          'displayName': newUser.title,
           'photoUrl': newUser.photoUrl,
         });
 
@@ -65,7 +65,7 @@ class AuthService {
         return UserModel(
           uid: firebaseUser.uid,
           email: firebaseUser.email ?? '',
-          displayName: firebaseUser.displayName ?? '',
+          title: firebaseUser.displayName ?? '',
         );
       }
     } on FirebaseAuthException catch (e) {

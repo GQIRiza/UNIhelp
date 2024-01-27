@@ -10,7 +10,7 @@ Future<UserModel> getProfile(uid) async {
       uid: userSnapshot['uid'],
       id: userSnapshot['id'],
       email: userSnapshot['email'],
-      displayName: userSnapshot['displayName'],
+      title: userSnapshot['displayName'],
       photoUrl: userSnapshot['photoUrl'],
     );
     return user;

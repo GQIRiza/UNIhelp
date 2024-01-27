@@ -65,7 +65,7 @@ class _ProfilePageState extends State<ProfilePage> {
     return Container(
       alignment: Alignment.center,
       child: Text(
-        user.displayName ?? 'No displayName',
+        user.title ?? 'No displayName',
         style: TextStyle(fontSize: 28),
       ),
     );
@@ -178,17 +178,21 @@ class _ProfilePageState extends State<ProfilePage> {
                 fontSize: 20, fontFamily: "Inter", color: Colors.black),
           ),
         ),
-        Container(
-          padding: const EdgeInsets.all(10),
-          alignment: Alignment.centerLeft,
-          height: 60,
-          decoration: BoxDecoration(
-            color: Colors.grey[100],
-          ),
-          child: Text(
-            'Мои задания',
-            style: TextStyle(
-                fontSize: 20, fontFamily: "Inter", color: Colors.black),
+        InkWell(
+          onTap: () =>
+              BlocProvider.of<ApiBloc>(context).add(AddWorkEvent()),
+          child: Container(
+            padding: const EdgeInsets.all(10),
+            alignment: Alignment.centerLeft,
+            height: 60,
+            decoration: BoxDecoration(
+              color: Colors.grey[100],
+            ),
+            child: Text(
+              'Добавить задание',
+              style: TextStyle(
+                  fontSize: 20, fontFamily: "Inter", color: Colors.black),
+            ),
           ),
         ),
         InkWell(

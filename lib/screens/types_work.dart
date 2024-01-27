@@ -61,7 +61,7 @@ class _TypesPageState extends State<TypesPage> {
                     trailing: const Icon(Icons.arrow_forward_ios_rounded,
                         color: Colors.black),
                     onTap: () {
-                      // Обработка нажатия на элемент списка
+                      BlocProvider.of<ApiBloc>(context).add(ListWorksByFilterEvent(selectedType: widget.types[index].id));
                     },
                   ),
                 ),

@@ -4,19 +4,10 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:unihelp/bloc/AuthenticationBloc.dart';
-import 'package:unihelp/bloc/authentication_Event.dart';
 import 'package:unihelp/firebase_options.dart';
 import 'package:unihelp/screens/authentication_page.dart';
-import 'package:unihelp/screens/profile.dart';
-import 'package:unihelp/screens/search.dart';
 import 'package:unihelp/bloc/api_bloc.dart';
 import 'package:unihelp/bloc/api_events.dart';
-import 'package:unihelp/bloc/api_states.dart';
-import 'package:unihelp/screens/dialogues.dart';
-import 'package:unihelp/screens/disciplines.dart';
-import 'package:unihelp/screens/start.dart';
-import 'package:unihelp/screens/types_work.dart';
-import 'package:unihelp/screens/unis.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
